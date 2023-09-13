@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from dog import Dog
+from dog import Dog  
 
 import io
 import sys
@@ -11,7 +11,7 @@ class TestDog:
 
     def test_is_class(self):
         '''is a class with the name "Dog"'''
-        fido = Dog()
+        fido = Dog("Fido")  
         assert(type(fido) == Dog)
 
 class TestBark:
@@ -19,12 +19,12 @@ class TestBark:
 
     def test_is_method(self):
         '''is an instance method'''
-        fido = Dog()
+        fido = Dog("Fido")  
         assert(type(fido.bark) == types.MethodType)
 
     def test_prints_woof(self):
         '''prints "Woof!"'''
-        fido = Dog()
+        fido = Dog("Fido")  
         captured_out = io.StringIO()
         sys.stdout = captured_out
         fido.bark()
@@ -36,14 +36,15 @@ class TestSit:
 
     def test_is_method(self):
         '''is an instance method'''
-        fido = Dog()
+        fido = Dog("Fido") 
         assert(type(fido.sit) == types.MethodType)
 
-    def test_prints_the_dog_is_sitting(self):
-        '''prints "The dog is sitting."'''
-        fido = Dog()
-        captured_out = io.StringIO()
-        sys.stdout = captured_out
-        fido.sit()
-        sys.stdout = sys.__stdout__
-        assert(captured_out.getvalue() == "The dog is sitting.\n")
+def test_prints_the_dog_is_sitting(self):
+    '''prints "The dog is sitting."'''
+    fido = Dog("Fido")
+    captured_out = io.StringIO()
+    sys.stdout = captured_out
+    fido.sit()
+    sys.stdout = sys.__stdout__
+    assert(captured_out.getvalue() == "The dog is sitting.\n")
+

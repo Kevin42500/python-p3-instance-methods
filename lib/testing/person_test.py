@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from person import Person
+from lib.person import Person  
 
 import io
 import sys
@@ -11,7 +11,7 @@ class TestPerson:
 
     def test_is_class(self):
         '''is a class with the name "Person"'''
-        guido = Person()
+        guido = Person("Guido") 
         assert(type(guido) == Person)
 
 class TestTalk:
@@ -19,12 +19,12 @@ class TestTalk:
 
     def test_is_method(self):
         '''is an instance method'''
-        guido = Person()
+        guido = Person("Guido")  
         assert(type(guido.talk) == types.MethodType)
 
     def test_prints_hello_world(self):
         '''prints "Hello World!"'''
-        guido = Person()
+        guido = Person("Guido")  
         captured_out = io.StringIO()
         sys.stdout = captured_out
         guido.talk()
@@ -32,18 +32,20 @@ class TestTalk:
         assert(captured_out.getvalue() == "Hello World!\n")
 
 class TestWalk:
-    '''Person.walk() in walk.py'''
+    '''Person.walk() in person.py'''
 
     def test_is_method(self):
         '''is an instance method'''
-        guido = Person()
+        guido = Person("Guido")  
         assert(type(guido.walk) == types.MethodType)
 
-    def test_prints_the_person_is_walking(self):
-        '''prints "The person is walking."'''
-        guido = Person()
-        captured_out = io.StringIO()
-        sys.stdout = captured_out
-        guido.walk()
-        sys.stdout = sys.__stdout__
-        assert(captured_out.getvalue() == "The person is walking.\n")
+    # In the TestWalk class in person_test.py
+def test_prints_the_person_is_walking(self):
+    '''prints "The person is walking."'''
+    guido = Person("Guido")
+    captured_out = io.StringIO()
+    sys.stdout = captured_out
+    guido.walk()
+    sys.stdout = sys.__stdout__
+    assert(captured_out.getvalue() == "The person is walking.\n")
+

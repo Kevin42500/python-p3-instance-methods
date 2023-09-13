@@ -1,7 +1,11 @@
-#!/usr/bin/env python3
+# lib/person.py
 
 class Person:
-    # Class body goes here
+    def __init__(self, name):
+        self.name = name
 
-    #Instance method definition
-    pass
+    def talk(self):
+        print("Hello World!")
+
+    def walk(self):
+        print(f"{self.name} is walking.")
